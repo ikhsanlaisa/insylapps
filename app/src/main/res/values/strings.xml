@@ -5,4 +5,7 @@
     <string name="in_register">Register your class</string>
     <string name="text_in_klasemen">Check your class klasemen</string>
     <string name="login">Register Now! and Be the Champion</string>
+    <string name="facebook_app_id">724561931081675</string>
+    <string name="fb_login_protocol_scheme">fb724561931081675</string>
+
 </resources>

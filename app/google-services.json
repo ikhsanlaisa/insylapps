@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "60418260073",
+    "firebase_url": "https://insylapps.firebaseio.com",
+    "project_id": "insylapps",
+    "storage_bucket": "insylapps.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60418260073:android:793e32aa67ae3416",
+        "android_client_info": {
+          "package_name": "com.example.ikhsanlaisa.insylapps"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "60418260073-533h04k5cfh9llhn5p08dtsdtt9apf0b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ikhsanlaisa.insylapps",
+            "certificate_hash": "63dcef1ca1ab536136c867f9938342f0bf7fff41"
+          }
+        },
+        {
+          "client_id": "60418260073-ias3d3d6hrsjll0g6ulgg1u9g9glm0bg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCS5jNTbQohXcAe8dpogOUBEFlNG_w4JpU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "60418260073-ias3d3d6hrsjll0g6ulgg1u9g9glm0bg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

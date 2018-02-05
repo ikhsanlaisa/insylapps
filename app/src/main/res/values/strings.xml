@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Insyl Apps</string>
+    <string name="in_score">In-Score</string>
+    <string name="text_inscore">You can count your score</string>
+    <string name="in_register">Register your class</string>
+    <string name="text_in_klasemen">Check your class klasemen</string>
+    <string name="login">Register Now! and Be the Champion</string>
+</resources>

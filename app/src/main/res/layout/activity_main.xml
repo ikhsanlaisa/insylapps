@@ -33,29 +33,20 @@
             android:textSize="8pt"
             android:textColor="@android:color/black"/>
 
-        <!--<com.facebook.login.widget.LoginButton-->
-            <!--android:id="@+id/login_button"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center_horizontal"-->
-            <!--android:layout_marginTop="30dp"-->
-            <!--android:layout_marginBottom="30dp"-->
-            <!--/>-->
-
         <Button
             android:id="@+id/login_button1"
             android:layout_marginTop="40dp"
-            android:layout_width="170dp"
-            android:layout_height="170dp"
-            android:background="@drawable/loginfb" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fb6" />
 
 
         <Button
             android:id="@+id/btn_google"
-            android:layout_width="240dp"
-            android:layout_height="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:background="@drawable/logingoogle"/>
+            android:background="@drawable/google"/>
 
 
     </LinearLayout>

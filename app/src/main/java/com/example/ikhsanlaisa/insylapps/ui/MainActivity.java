@@ -1,10 +1,7 @@
-package com.example.ikhsanlaisa.insylapps;
+package com.example.ikhsanlaisa.insylapps.ui;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.ikhsanlaisa.insylapps.R;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -19,15 +17,11 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInApi;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,7 +32,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import java.util.ArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -52,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private final static int RC_SIGN_IN = 2;
     GoogleApiClient mGoogleApiClient;
     FirebaseAuth.AuthStateListener mAuthListener;
+    JSONObject jsonObject;
 
     @Override
     public void onStart() {
@@ -71,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
 
         button = findViewById(R.id.btn_google);
 
@@ -140,6 +139,20 @@ public class MainActivity extends AppCompatActivity {
                 .build();
     }
 
+//    public void setProfilView(JSONObject jsonObject){
+//        try{
+//            Intent
+//            String email = jsonObject.getString("email");
+//            String photo = jsonObject.getString("user_photos");
+//            String birthday = jsonObject.getString("user_birthday");
+//            String profile = jsonObject.getString("public_profile");
+//
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
+
     //==================================Login with google==========================================
 
     // Configure Google Sign In
@@ -197,11 +210,23 @@ public class MainActivity extends AppCompatActivity {
     //==================================Login with facebook==========================================
 
     private void updateUI() {
-        Toast.makeText(MainActivity.this, "You are logged in ", Toast.LENGTH_LONG).show();
+        try{
 
-        Intent accountIntent = new Intent(MainActivity.this, AccountActivity.class);
-        startActivity(accountIntent);
-        finish();
+            Intent intent = new Intent(this, AccountActivity.class);
+            String email = jsonObject.getString("email");
+            intent.putExtra("email", email);
+//            String photo = jsonObject.getString("user_photos");
+//            intent.putExtra("photo", photo);
+            String birthday = jsonObject.getString("user_birthday");
+            intent.putExtra("birthday", birthday);
+            String profile = jsonObject.getString("public_profile");
+            intent.putExtra("porfil", profile);
+            Toast.makeText(MainActivity.this, "You are logged in ", Toast.LENGTH_LONG).show();
+            startActivity(intent);
+            finish();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -230,6 +255,5 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
 
 }

@@ -1,4 +1,4 @@
-package com.example.ikhsanlaisa.insylapps;
+package com.example.ikhsanlaisa.insylapps.ui;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.example.ikhsanlaisa.insylapps.R;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -22,7 +23,7 @@ public class SplashScreen extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), loginActivity.class));
                 finish();
             }
         }, 3000L);

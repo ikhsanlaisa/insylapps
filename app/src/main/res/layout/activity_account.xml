@@ -22,4 +22,10 @@
         android:gravity="center"
         android:text="Logut" />
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/close_vector" />
+
 </LinearLayout>

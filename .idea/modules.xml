@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/InsylApps.iml" filepath="$PROJECT_DIR$/InsylApps.iml" />
+      <module fileurl="file://C:\Users\ROG\Desktop\Capstone Project\insylapps\InsylApps.iml" filepath="C:\Users\ROG\Desktop\Capstone Project\insylapps\InsylApps.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\ROG\Desktop\Capstone Project\insylapps\app\app.iml" filepath="C:\Users\ROG\Desktop\Capstone Project\insylapps\app\app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/insylapps.iml" filepath="$PROJECT_DIR$/insylapps.iml" />
     </modules>
   </component>
 </project>

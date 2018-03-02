@@ -2,6 +2,7 @@ package com.example.ikhsanlaisa.insylapps.ui;
 
 import android.content.Intent;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,9 +22,9 @@ import retrofit2.Response;
 
 public class loginActivity extends BaseActivity {
     @BindView(R.id.email)
-    TextView email;
+    EditText email;
     @BindView(R.id.password)
-    TextView password;
+    EditText password;
 
     @OnClick(R.id.sign_up)
     void signUp() {
@@ -31,9 +32,13 @@ public class loginActivity extends BaseActivity {
     }
 
     @OnClick(R.id.login_button)
-    void login() {
+    public void login() {
+        if (email.getText().toString().isEmpty())
+            email.setError("Harus diisi ");
+        else if (password.getText().toString().isEmpty())
+            password.setError("Harus diisi ");
+        else
         Api.getService().login(email.getText().toString(), password.getText().toString()).enqueue(new Callback<LoginResponse<Data>>() {
-
             @Override
             public void onResponse(Call<LoginResponse<Data>> call, Response<LoginResponse<Data>> response) {
                 if (response.isSuccessful()) {
@@ -46,9 +51,17 @@ public class loginActivity extends BaseActivity {
                     Log.d("Token", Hawk.get(Constant.TOKEN, ""));
                     Log.d("ini tokennya ", response.body().data.token );
                     if (!Hawk.get(Constant.TOKEN,"ERROR").equals("ERROR")){
-                        startActivity(new Intent(loginActivity.this, AccountActivity.class));
+                        Intent intent = new Intent(loginActivity.this, AccountActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        finish();
+                        startActivity(intent);
+//            startActivity(new Intent(loginActivity.this, AccountActivity.class));
                     }else{
-                        startActivity(new Intent(loginActivity.this, loginActivity.class));
+                        Intent intent = new Intent(loginActivity.this, loginActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        finish();
+//            startActivity(new Intent(loginActivity.this, loginActivity.class));
+                        startActivity(intent);
                     }
 //                    startActivity(new Intent(loginActivity.this, AccountActivity.class));
                 } else {
@@ -63,35 +76,13 @@ public class loginActivity extends BaseActivity {
             }
 
         });
-//        Api.getService().login(email.getText().toString(), password.getText().toString()).enqueue(new Callback<BaseResponse>() {
-//            @Override
-//            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-//                Log.d("INITOL", "onResponse");
-//                if (response.isSuccessful()) {
-//                    Log.d("INITOL", "successfull");
-//                    Toast.makeText(loginActivity.this, Constant.TAG_SUCCESS, Toast.LENGTH_LONG).show();
-//                    Hawk.put(Constant.DATA, response.body().data);
-//                    Hawk.put(Constant.TOKEN, "Bearer " + response.body().data.token);
-//                    Hawk.put(Constant.USER, response.body().data.user);
-//                    Hawk.put(Constant.ROLE, response.body().data.user.roles);
-//                    Log.d("clik", response.body().data.token);
-//                    startActivity(new Intent(loginActivity.this, AccountActivity.class));
-//                } else if (response.code() == 401) {
-//                    Toast.makeText(loginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<BaseResponse> call, Throwable t) {
-//                Log.e("Failure", t.getMessage());
-//                Toast.makeText(loginActivity.this, Constant.TAG_NETWORK, Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 
     @Override
     public int getContent() {
         return R.layout.activity_login;
+
     }
+
 
 }

@@ -13,37 +13,59 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ikhsanlaisa.insylapps.R;
+import com.example.ikhsanlaisa.insylapps.model.Data;
+import com.example.ikhsanlaisa.insylapps.model.RegisterResponse;
+import com.example.ikhsanlaisa.insylapps.service.Api;
 
+import butterknife.BindView;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
-public class registerActivity extends AppCompatActivity{
+public class registerActivity extends BaseActivity{
+    @BindView(R.id.uname)
+    EditText uname;
+    @BindView(R.id.email)
+    EditText email;
+    @BindView(R.id.password)
+    EditText password;
 
-    ProgressDialog dialog;
-    private TextView signin;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-
-//        nama = findViewById(R.id.uname);
-//        email = findViewById(R.id.email);
-//        password = findViewById(R.id.password);
-//        Register = findViewById(R.id.register);
-//        pd = new ProgressDialog(this);
-        signin = findViewById(R.id.sign_up);
-        signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(registerActivity.this, loginActivity.class));
-            }
-        });
-
-
-
+    @OnClick(R.id.sign_up)
+    void SignIn(){
+        startActivity(new Intent(registerActivity.this, loginActivity.class));
     }
 
+    @OnClick(R.id.register)
+    public void register(){
+        if (uname.getText().toString().isEmpty())
+            uname.setError("Harus diisi ");
+        else if (email.getText().toString().isEmpty())
+            email.setError("Harus diisi ");
+        else if (password.getText().toString().isEmpty())
+            password.setError("Harus diisi ");
+        else
+            Api.getService().register(uname.getText().toString(), email.getText().toString(), password.getText().toString()).enqueue(new Callback<RegisterResponse<Data>>() {
+                @Override
+                public void onResponse(Call<RegisterResponse<Data>> call, Response<RegisterResponse<Data>> response) {
+                    if (response.isSuccessful()){
+                        Toast.makeText(registerActivity.this, "Data anda berhasil disimpan", Toast.LENGTH_LONG).show();
+                    }else
+                        Toast.makeText(registerActivity.this, "Data gagal disimpan", Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onFailure(Call<RegisterResponse<Data>> call, Throwable t) {
+
+                }
+            });
+
+    }
+    @Override
+    public int getContent() {
+        return R.layout.activity_register;
+    }
 
 
 }

@@ -4,10 +4,14 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by ikhsanlaisa on 26/02/18.
+ * Created by ikhsanlaisa on 01/03/18.
  */
 
-public class LoginResponse<Data> extends BaseResponse {
+public class RegisterResponse<Data> extends BaseResponse {
+    @SerializedName("nama")
+    @Expose
+    String nama;
+
     @SerializedName("email")
     @Expose
     String email;
@@ -15,12 +19,4 @@ public class LoginResponse<Data> extends BaseResponse {
     @SerializedName("password")
     @Expose
     String password;
-
-    @SerializedName("roles")
-    @Expose
-    public String roles;
-
-    @SerializedName("data")
-    @Expose
-    public Data data;
 }

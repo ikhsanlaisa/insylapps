@@ -14,24 +14,27 @@
     <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:src="@drawable/insyl_logo"/>
+        android:layout_height="105dp"
+        android:src="@drawable/insyl_logo" />
     <EditText
         android:id="@+id/uname"
-        android:layout_width="280dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_margin="10dp"
         android:hint="Enter your full name" />
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="280dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_margin="10dp"
         android:hint="Enter your email" />
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="280dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_margin="10dp"
         android:hint="Enter your password"
         android:inputType="textPassword" />
 

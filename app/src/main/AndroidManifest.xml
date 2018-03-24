@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ikhsanlaisa.insylapps">
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -45,9 +46,10 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.AccountActivity" />
+        <activity android:name=".ui.HomeActivity" />
         <activity android:name=".ui.loginActivity" />
-        <activity android:name=".ui.registerActivity"></activity>
+        <activity android:name=".ui.registerActivity" />
+        <activity android:name=".ui.ScoreActivity"></activity>
     </application>
 
 </manifest>

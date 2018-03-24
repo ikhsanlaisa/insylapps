@@ -50,6 +50,9 @@ public class registerActivity extends BaseActivity{
                 @Override
                 public void onResponse(Call<RegisterResponse<Data>> call, Response<RegisterResponse<Data>> response) {
                     if (response.isSuccessful()){
+                        uname.setText(null);
+                        email.setText(null);
+                        password.setText(null);
                         Toast.makeText(registerActivity.this, "Data anda berhasil disimpan", Toast.LENGTH_LONG).show();
                     }else
                         Toast.makeText(registerActivity.this, "Data gagal disimpan", Toast.LENGTH_LONG).show();

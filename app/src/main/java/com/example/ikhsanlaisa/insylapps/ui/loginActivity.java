@@ -3,7 +3,6 @@ package com.example.ikhsanlaisa.insylapps.ui;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ikhsanlaisa.insylapps.Constant;
@@ -51,11 +50,11 @@ public class loginActivity extends BaseActivity {
                     Log.d("Token", Hawk.get(Constant.TOKEN, ""));
                     Log.d("ini tokennya ", response.body().data.token );
                     if (!Hawk.get(Constant.TOKEN,"ERROR").equals("ERROR")){
-                        Intent intent = new Intent(loginActivity.this, AccountActivity.class);
+                        Intent intent = new Intent(loginActivity.this, HomeActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         finish();
                         startActivity(intent);
-//            startActivity(new Intent(loginActivity.this, AccountActivity.class));
+//            startActivity(new Intent(loginActivity.this, HomeActivity.class));
                     }else{
                         Intent intent = new Intent(loginActivity.this, loginActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -63,7 +62,7 @@ public class loginActivity extends BaseActivity {
 //            startActivity(new Intent(loginActivity.this, loginActivity.class));
                         startActivity(intent);
                     }
-//                    startActivity(new Intent(loginActivity.this, AccountActivity.class));
+//                    startActivity(new Intent(loginActivity.this, HomeActivity.class));
                 } else {
                     Toast.makeText(loginActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(loginActivity.this, response.body().error, Toast.LENGTH_SHORT).show();

@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null){
-                     startActivity(new Intent(MainActivity.this, AccountActivity.class));
+                     startActivity(new Intent(MainActivity.this, HomeActivity.class));
                 }
             }
         };
@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
     private void updateUI() {
         try{
 
-            Intent intent = new Intent(this, AccountActivity.class);
+            Intent intent = new Intent(this, HomeActivity.class);
             String email = jsonObject.getString("email");
             intent.putExtra("email", email);
 //            String photo = jsonObject.getString("user_photos");

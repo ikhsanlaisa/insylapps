@@ -7,5 +7,13 @@
     <string name="login">Register Now! and Be the Champion</string>
     <string name="facebook_app_id">724561931081675</string>
     <string name="fb_login_protocol_scheme">fb724561931081675</string>
+    <string name="home">Home</string>
+    <string name="news">News</string>
+    <string name="alert">Alert</string>
+    <string name="setting">Setting</string>
+    <string name="inscore">IN-SCORE</string>
+    <string name="incontact">IN-CONTACT</string>
+    <string name="inklasemen">IN-KLASEMEN</string>
+    <string name="inregister">IN-REGISTER</string>
 
 </resources>

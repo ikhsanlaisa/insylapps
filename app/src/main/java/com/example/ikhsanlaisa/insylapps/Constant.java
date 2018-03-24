@@ -2,7 +2,7 @@ package com.example.ikhsanlaisa.insylapps;
 
 
 public class Constant {
-    public static final String BASE_URL = "http://192.168.0.110/api/";
+    public static final String BASE_URL = "http://10.20.0.120/api/";
     public static final String DATA = "data";
     public static final String USER = "user";
     public static final String ROLE = "role";

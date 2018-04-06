@@ -8,7 +8,7 @@ import android.widget.Toast;
 import com.example.ikhsanlaisa.insylapps.Constant;
 import com.example.ikhsanlaisa.insylapps.R;
 import com.example.ikhsanlaisa.insylapps.model.Data;
-import com.example.ikhsanlaisa.insylapps.model.LoginResponse;
+import com.example.ikhsanlaisa.insylapps.Response.LoginResponse;
 import com.example.ikhsanlaisa.insylapps.service.Api;
 import com.orhanobut.hawk.Hawk;
 

@@ -6,9 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
-import com.example.ikhsanlaisa.insylapps.Adapter.ScoreAdapter;
+import com.example.ikhsanlaisa.insylapps.Adapter.KontakAdapter;
 import com.example.ikhsanlaisa.insylapps.R;
-import com.example.ikhsanlaisa.insylapps.Response.ScoreResponse;
+import com.example.ikhsanlaisa.insylapps.Response.KontakResponse;
 import com.example.ikhsanlaisa.insylapps.service.Api;
 
 import java.util.List;
@@ -18,12 +18,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ScoreActivity extends BaseActivity {
-    @BindView(R.id.recycler)
+public class KontakActivity extends BaseActivity {
+    @BindView(R.id.konrecycler)
     RecyclerView rv;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,22 +35,21 @@ public class ScoreActivity extends BaseActivity {
     }
 
     private void DaftarItem() {
-        Call<List<ScoreResponse>> getResponsecall = Api.getService().score();
-        getResponsecall.enqueue(new Callback<List<ScoreResponse>>() {
+        Call<List<KontakResponse>> getKontakResponse = Api.getService().kontak();
+        getKontakResponse.enqueue(new Callback<List<KontakResponse>>() {
             @Override
-            public void onResponse(Call<List<ScoreResponse>> call, Response<List<ScoreResponse>> response) {
+            public void onResponse(Call<List<KontakResponse>> call, Response<List<KontakResponse>> response) {
                 if (response.isSuccessful()) {
-                    List<ScoreResponse> scoreResponses = response.body();
+                    List<KontakResponse> kontakResponses = response.body();
                     Log.d("LOGGING_SCORE", "Jumlah data Kontak: " +
-                            String.valueOf(scoreResponses.size()));
-                    adapter = new ScoreAdapter(scoreResponses);
+                            String.valueOf(kontakResponses.size()));
+                    adapter = new KontakAdapter(kontakResponses);
                     rv.setVisibility(View.VISIBLE);
                     rv.setAdapter(adapter);
                 }
             }
-
             @Override
-            public void onFailure(Call<List<ScoreResponse>> call, Throwable t) {
+            public void onFailure(Call<List<KontakResponse>> call, Throwable t) {
 
             }
         });
@@ -59,6 +57,6 @@ public class ScoreActivity extends BaseActivity {
 
     @Override
     public int getContent() {
-        return R.layout.activity_score;
+        return R.layout.activity_kontak;
     }
 }

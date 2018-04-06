@@ -16,25 +16,24 @@
         android:layout_gravity="center"
         android:src="@drawable/logo_insyl1_1" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
-        android:background="#ffffff"
-        android:orientation="vertical">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="8"-->
+        <!--android:orientation="vertical">-->
 
-        <android.support.design.widget.BottomNavigationView
-            android:id="@+id/NavTop"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom"
-            android:background="#ffffff"
-            design:menu="@menu/menu_nav"
-            android:elevation="20dp"
-            >
+        <!--<android.support.design.widget.BottomNavigationView-->
+            <!--android:id="@+id/NavTop"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--android:background="#ffffff"-->
+            <!--design:menu="@menu/menu_nav"-->
+            <!--android:elevation="20dp"-->
+            <!--&gt;-->
 
-        </android.support.design.widget.BottomNavigationView>
+        <!--</android.support.design.widget.BottomNavigationView>-->
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler"
@@ -43,6 +42,6 @@
 
         </android.support.v7.widget.RecyclerView>
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
 </LinearLayout>

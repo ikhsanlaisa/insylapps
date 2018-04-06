@@ -49,7 +49,8 @@
         <activity android:name=".ui.HomeActivity" />
         <activity android:name=".ui.loginActivity" />
         <activity android:name=".ui.registerActivity" />
-        <activity android:name=".ui.ScoreActivity"></activity>
+        <activity android:name=".ui.ScoreActivity" />
+        <activity android:name=".ui.KontakActivity"></activity>
     </application>
 
 </manifest>

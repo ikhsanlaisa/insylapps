@@ -2,6 +2,7 @@ package com.example.ikhsanlaisa.insylapps.service;
 
 import com.example.ikhsanlaisa.insylapps.Response.KontakResponse;
 import com.example.ikhsanlaisa.insylapps.Response.ScoreResponse;
+import com.example.ikhsanlaisa.insylapps.Response.UserResponse;
 import com.example.ikhsanlaisa.insylapps.model.Data;
 import com.example.ikhsanlaisa.insylapps.Response.LoginResponse;
 import com.example.ikhsanlaisa.insylapps.Response.RegisterResponse;
@@ -30,4 +31,9 @@ public interface Service {
 
     @GET("kontak")
     Call<List<KontakResponse>> kontak();
+
+    @GET("user")
+    Call<List<UserResponse>> user();
+
+
 }

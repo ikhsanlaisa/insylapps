@@ -5,6 +5,7 @@ import com.example.ikhsanlaisa.insylapps.Response.KelasResponse;
 import com.example.ikhsanlaisa.insylapps.Response.KontakResponse;
 import com.example.ikhsanlaisa.insylapps.Response.MatchResponse;
 import com.example.ikhsanlaisa.insylapps.Response.NewsResponse;
+import com.example.ikhsanlaisa.insylapps.Response.RegisLombaResponse;
 import com.example.ikhsanlaisa.insylapps.Response.ScoreResponse;
 import com.example.ikhsanlaisa.insylapps.Response.UserResponse;
 import com.example.ikhsanlaisa.insylapps.model.Data;
@@ -50,6 +51,10 @@ public interface Service {
 
     @GET("cabor")
     Call<List<CaborResponse>> cabor();
+
+    @FormUrlEncoded
+    @POST("regis")
+    Call<RegisLombaResponse> regis(@Field("olahraga_id") Integer cabor_id);
 
     @FormUrlEncoded
     @POST("updateuser")

@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.ikhsanlaisa.insylapps.R;
 import com.example.ikhsanlaisa.insylapps.Response.CaborResponse;
+import com.example.ikhsanlaisa.insylapps.Response.RegisLombaResponse;
 import com.example.ikhsanlaisa.insylapps.service.Api;
 
 import java.util.ArrayList;
@@ -22,12 +24,37 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegisterLombaActivity extends BaseActivity implements AdapterView.OnItemClickListener{
+    EditText uname, email;
     Spinner spcabor;
+    Button regis;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
             spcabor = findViewById(R.id.spcabor);
+            uname = findViewById(R.id.uname);
+            email = findViewById(R.id.email);
+            regis = findViewById(R.id.regis);
 
+            regis.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Api.getService().regis(spcabor.getSelectedItemPosition()+1).enqueue(new Callback<RegisLombaResponse>() {
+                        @Override
+                        public void onResponse(Call<RegisLombaResponse> call, Response<RegisLombaResponse> response) {
+                            if (response.isSuccessful()){
+                                uname.setText(null);
+                                email.setText(null);
+                                Toast.makeText(RegisterLombaActivity.this,"berhasil", Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<RegisLombaResponse> call, Throwable t) {
+
+                        }
+                    });
+                }
+            });
         inispinnercabor();
     }
 

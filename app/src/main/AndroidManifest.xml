@@ -57,7 +57,8 @@
         <activity android:name=".ui.RegisterLombaActivity" />
         <activity android:name=".ui.KlasemenActivity" />
         <activity android:name=".ui.UpdateProfile" />
-        <activity android:name=".ui.DetailNews"></activity>
+        <activity android:name=".ui.DetailNews" />
+        <activity android:name=".ui.UpdatePass"></activity>
     </application>
 
 </manifest>

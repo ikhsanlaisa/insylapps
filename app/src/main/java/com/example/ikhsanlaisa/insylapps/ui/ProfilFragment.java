@@ -80,6 +80,24 @@ public class ProfilFragment extends Fragment {
             }
         });
 
+        TextView upass = view.findViewById(R.id.upass);
+        upass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), UpdatePass.class));
+                Toast.makeText(getActivity(), "Update Password", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        ImageView imgpass = view.findViewById(R.id.imgpass);
+        imgpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), UpdatePass.class));
+                Toast.makeText(getActivity(), "Update Password", Toast.LENGTH_LONG).show();
+            }
+        });
+
         TextView uprofil = view.findViewById(R.id.uprofil);
         uprofil.setOnClickListener(new View.OnClickListener() {
             @Override

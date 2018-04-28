@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/list_grad"
     android:orientation="vertical"
-    tools:context="com.example.ikhsanlaisa.insylapps.ui.AccountActivity">
+    tools:context="com.example.ikhsanlaisa.insylapps.ui.KontakActivity">
 
     <ImageView
         android:id="@+id/photo"
@@ -15,11 +15,11 @@
         android:layout_gravity="center"
         android:src="@drawable/logo_insyl1_1" />
 
-    <Button
-        android:id="@+id/btnlogout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Logut" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/konrecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

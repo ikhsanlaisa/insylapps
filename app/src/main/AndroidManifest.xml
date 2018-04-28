@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.ikhsanlaisa.insylapps">
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -45,9 +48,16 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.AccountActivity" />
+        <activity android:name=".ui.HomeFragment" />
         <activity android:name=".ui.loginActivity" />
-        <activity android:name=".ui.registerActivity"></activity>
+        <activity android:name=".ui.registerActivity" />
+        <activity android:name=".ui.ScoreActivity" />
+        <activity android:name=".ui.KontakActivity" />
+        <activity android:name=".ui.MenuActivity" />
+        <activity android:name=".ui.RegisterLombaActivity" />
+        <activity android:name=".ui.KlasemenActivity" />
+        <activity android:name=".ui.UpdateProfile" />
+        <activity android:name=".ui.DetailNews"></activity>
     </application>
 
 </manifest>

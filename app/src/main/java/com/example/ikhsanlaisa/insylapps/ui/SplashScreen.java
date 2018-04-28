@@ -2,9 +2,7 @@ package com.example.ikhsanlaisa.insylapps.ui;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Window;
 import android.widget.ImageView;
 
 import com.example.ikhsanlaisa.insylapps.Constant;
@@ -26,7 +24,7 @@ public class SplashScreen extends BaseActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent intent = new Intent(SplashScreen.this, AccountActivity.class);
+                    Intent intent = new Intent(SplashScreen.this, MenuActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     finish();
                     startActivity(intent);
@@ -34,7 +32,7 @@ public class SplashScreen extends BaseActivity {
             }, 3000L);
 
 
-//            startActivity(new Intent(loginActivity.this, AccountActivity.class));
+//            startActivity(new Intent(loginActivity.this, HomeFragment.class));
         }else{
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {

@@ -1,20 +1,12 @@
 package com.example.ikhsanlaisa.insylapps.ui;
 
-import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ikhsanlaisa.insylapps.R;
 import com.example.ikhsanlaisa.insylapps.model.Data;
-import com.example.ikhsanlaisa.insylapps.model.RegisterResponse;
+import com.example.ikhsanlaisa.insylapps.Response.RegisterResponse;
 import com.example.ikhsanlaisa.insylapps.service.Api;
 
 import butterknife.BindView;
@@ -50,6 +42,9 @@ public class registerActivity extends BaseActivity{
                 @Override
                 public void onResponse(Call<RegisterResponse<Data>> call, Response<RegisterResponse<Data>> response) {
                     if (response.isSuccessful()){
+                        uname.setText(null);
+                        email.setText(null);
+                        password.setText(null);
                         Toast.makeText(registerActivity.this, "Data anda berhasil disimpan", Toast.LENGTH_LONG).show();
                     }else
                         Toast.makeText(registerActivity.this, "Data gagal disimpan", Toast.LENGTH_LONG).show();

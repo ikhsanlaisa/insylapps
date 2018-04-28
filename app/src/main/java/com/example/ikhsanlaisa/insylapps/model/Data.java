@@ -1,9 +1,8 @@
 package com.example.ikhsanlaisa.insylapps.model;
 
+import com.example.ikhsanlaisa.insylapps.Response.ScoreResponse;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
 
 
 public class Data {
@@ -15,9 +14,9 @@ public class Data {
     @Expose
     public User user;
 
-//    @SerializedName("photo")
+//    @SerializedName("score")
 //    @Expose
-//    public Photo photo;
+//    public ScoreResponse<D> scoreResponse;
 //
 //    @SerializedName("photos")
 //    @Expose

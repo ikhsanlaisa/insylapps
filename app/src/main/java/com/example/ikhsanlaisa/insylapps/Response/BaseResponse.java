@@ -1,4 +1,4 @@
-package com.example.ikhsanlaisa.insylapps.model;
+package com.example.ikhsanlaisa.insylapps.Response;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

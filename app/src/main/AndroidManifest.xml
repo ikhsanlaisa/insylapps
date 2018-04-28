@@ -56,7 +56,8 @@
         <activity android:name=".ui.MenuActivity" />
         <activity android:name=".ui.RegisterLombaActivity" />
         <activity android:name=".ui.KlasemenActivity" />
-        <activity android:name=".ui.UpdateProfileActivity"></activity>
+        <activity android:name=".ui.UpdateProfile" />
+        <activity android:name=".ui.DetailNews"></activity>
     </application>
 
 </manifest>

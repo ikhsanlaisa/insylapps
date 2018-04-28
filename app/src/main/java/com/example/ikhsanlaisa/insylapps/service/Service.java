@@ -1,6 +1,9 @@
 package com.example.ikhsanlaisa.insylapps.service;
 
+import com.example.ikhsanlaisa.insylapps.Response.KelasResponse;
 import com.example.ikhsanlaisa.insylapps.Response.KontakResponse;
+import com.example.ikhsanlaisa.insylapps.Response.MatchResponse;
+import com.example.ikhsanlaisa.insylapps.Response.NewsResponse;
 import com.example.ikhsanlaisa.insylapps.Response.ScoreResponse;
 import com.example.ikhsanlaisa.insylapps.Response.UserResponse;
 import com.example.ikhsanlaisa.insylapps.model.Data;
@@ -33,7 +36,18 @@ public interface Service {
     Call<List<KontakResponse>> kontak();
 
     @GET("user")
-    Call<List<UserResponse>> user();
+    Call<UserResponse> user();
 
+    @GET("news")
+    Call<List<NewsResponse>> news();
 
+    @GET("jadwal")
+    Call<List<MatchResponse>> match();
+
+    @GET("kelas")
+    Call<List<KelasResponse>> kelas();
+
+    @FormUrlEncoded
+    @POST("updateuser")
+    Call<UserResponse> updateuser(@Field("nama") String nama, @Field("email") String email, @Field("tgl_lahir") String tgl_lahir, @Field("no_hp") String no_hp, @Field("alamat") String alamat, @Field("kelas_id") Integer foto);
 }

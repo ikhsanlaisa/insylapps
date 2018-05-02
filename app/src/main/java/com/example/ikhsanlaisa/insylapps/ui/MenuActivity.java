@@ -7,8 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.ikhsanlaisa.insylapps.Constant;
 import com.example.ikhsanlaisa.insylapps.R;
 import com.example.ikhsanlaisa.insylapps.ui.BaseActivity;
+import com.orhanobut.hawk.Hawk;
 
 public class MenuActivity extends BaseActivity {
 
@@ -22,6 +24,8 @@ public class MenuActivity extends BaseActivity {
         FragmentTransaction fti = getSupportFragmentManager().beginTransaction();
         fti.replace(R.id.content, fragment, "FragmentName");
         fti.commit();
+
+//        if (!Hawk.get(Constant.TOKEN, "Error")
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mSelected

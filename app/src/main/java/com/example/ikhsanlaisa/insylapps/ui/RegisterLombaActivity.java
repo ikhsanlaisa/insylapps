@@ -27,6 +27,8 @@ public class RegisterLombaActivity extends BaseActivity implements AdapterView.O
     EditText uname, email;
     Spinner spcabor;
     Button regis;
+    List<CaborResponse> caborResponses;
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,7 @@ public class RegisterLombaActivity extends BaseActivity implements AdapterView.O
             regis.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Api.getService().regis(spcabor.getSelectedItemPosition()+1).enqueue(new Callback<RegisLombaResponse>() {
+                    Api.getService().regis(id).enqueue(new Callback<RegisLombaResponse>() {
                         @Override
                         public void onResponse(Call<RegisLombaResponse> call, Response<RegisLombaResponse> response) {
                             if (response.isSuccessful()){
@@ -63,7 +65,7 @@ public class RegisterLombaActivity extends BaseActivity implements AdapterView.O
             @Override
             public void onResponse(Call<List<CaborResponse>> call, Response<List<CaborResponse>> response) {
                 if (response.isSuccessful()) {
-                    List<CaborResponse> caborResponses = response.body();
+                    caborResponses = response.body();
                     List<String> listSpinner = new ArrayList<String>();
                     for (int i = 0; i < caborResponses.size(); i++) {
                         listSpinner.add(caborResponses.get(i).getCabor());
@@ -81,6 +83,18 @@ public class RegisterLombaActivity extends BaseActivity implements AdapterView.O
 
             }
         });
+
+        spcabor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                RegisterLombaActivity.this.id = caborResponses.get(position).getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
@@ -91,7 +105,7 @@ public class RegisterLombaActivity extends BaseActivity implements AdapterView.O
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String selectedName = parent.getItemAtPosition(position).toString();
-
+        id = caborResponses.get(position).getId();
         Toast.makeText(RegisterLombaActivity.this, "Kamu memilih kelas " + selectedName, Toast.LENGTH_SHORT).show();
 
     }

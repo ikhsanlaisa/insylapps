@@ -5,6 +5,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class KelasResponse extends BaseResponse{
 
+    @SerializedName("id")
+    @Expose
+    public int id;
+
     @SerializedName("nama_kelas")
     @Expose
     public String nama;
@@ -27,5 +31,13 @@ public class KelasResponse extends BaseResponse{
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

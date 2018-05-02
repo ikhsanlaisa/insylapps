@@ -42,7 +42,7 @@
                         android:text="SI-39-05"
                         android:textColor="#26ACCC"
                         android:layout_gravity="center"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:textStyle="bold"/>
 
                     <TextView
@@ -50,9 +50,9 @@
                         android:layout_height="wrap_content"
                         android:text="VS"
                         android:textColor="#26ACCC"
-                        android:textSize="10sp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginStart="10dp"
+                        android:textSize="8sp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="5dp"
                         android:layout_gravity="center"
                         android:textStyle="bold" />
 
@@ -65,7 +65,7 @@
                         android:text="SI-39-05"
                         android:textColor="#26ACCC"
                         android:layout_gravity="center"
-                        android:textSize="20sp"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         />
 
@@ -85,7 +85,7 @@
                         android:text="Insyl Basketball"
                         android:id="@+id/cabor"
                         android:textColor="#26ACCC"
-                        android:textSize="15sp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -106,7 +106,7 @@
                     android:text="2018-04-25 08:00"
                     android:textColor="#26ACCC"
                     android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     />
 
             <TextView
@@ -115,7 +115,7 @@
                     android:text="Insyl sdsds"
                     android:id="@+id/loc"
                     android:textColor="#26ACCC"
-                    android:textSize="15sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
             </LinearLayout>

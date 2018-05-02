@@ -36,9 +36,9 @@ public class UserResponse extends BaseResponse {
     @Expose
     public int kelas_id;
 
-    @SerializedName("kelas")
+    @SerializedName("tb_kelas")
     @Expose
-    public KelasResponse kelasResponse;
+    public KelasResponse kelas;
 
     public String getNama() {
         return nama;

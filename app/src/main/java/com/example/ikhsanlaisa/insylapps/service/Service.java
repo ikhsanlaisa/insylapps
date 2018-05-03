@@ -39,7 +39,8 @@ public interface Service {
 
     @FormUrlEncoded
     @POST("register")
-    Call<RegisterResponse<Data>> register(@Field("nama") String nama, @Field("email") String email, @Field("password") String password);
+    Call<RegisterResponse<Data>> register(@Field("nama") String nama, @Field("email") String email,
+                                          @Field("password") String password, @Field("kelas_id") int kelas_id);
 
     @GET("score")
     Call<List<ScoreResponse>> score();

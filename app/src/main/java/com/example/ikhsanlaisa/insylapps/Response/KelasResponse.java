@@ -13,6 +13,10 @@ public class KelasResponse extends BaseResponse{
     @Expose
     public String nama;
 
+    @SerializedName("point")
+    @Expose
+    public int point;
+
     @SerializedName("foto")
     @Expose
     public String foto;
@@ -23,6 +27,14 @@ public class KelasResponse extends BaseResponse{
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
     }
 
     public String getFoto() {

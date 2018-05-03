@@ -8,7 +8,6 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.Toast;
 
@@ -17,12 +16,8 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.ikhsanlaisa.insylapps.R;
-import com.orhanobut.hawk.Hawk;
 
 import java.util.HashMap;
-
-import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,12 +37,10 @@ public class HomesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View rootView= inflater.inflate(R.layout.fragment_homes, container, false);
 
         sliderLayout = rootView.findViewById(R.id.slider);
         GL = rootView.findViewById(R.id.gridlayout);
-//        btnNV = rootView.findViewById(R.id.NavBot);
         HashMap<String, Integer> fileMaps = new HashMap<String, Integer>();
         fileMaps.put("hehhee", R.drawable.juara);
         fileMaps.put("hbehfbe", R.drawable.klasemen);
@@ -68,7 +61,6 @@ public class HomesFragment extends Fragment {
         sliderLayout.setCustomAnimation(new DescriptionAnimation());
         sliderLayout.setDuration(4000);
 
-//        logout();
         setToggleEvent(GL);
         return rootView;
     }
@@ -83,33 +75,28 @@ public class HomesFragment extends Fragment {
                     switch (finalI) {
                         case 0:
                             Intent intent = new Intent(getActivity(), ScoreActivity.class);
+                            Toast.makeText(getActivity(), "Insyl-Score", Toast.LENGTH_LONG).show();
                             startActivity(intent);
                             break;
                         case 1:
                             Intent intent1 = new Intent(getActivity(), KlasemenActivity.class);
                             startActivity(intent1);
-                            Toast.makeText(getActivity(), "Clicked at index " + finalI, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Insyl-Klasemen", Toast.LENGTH_LONG).show();
                             break;
                         case 2:
                             Intent intent2 = new Intent(getActivity(), KontakActivity.class);
                             startActivity(intent2);
-                            Toast.makeText(getActivity(), "Clicked at index " + finalI, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Insyl-Contact", Toast.LENGTH_LONG).show();
                             break;
                         case 3:
+
                             Intent intent3 = new Intent(getActivity(), RegisterLombaActivity.class);
                             startActivity(intent3);
-                            Toast.makeText(getActivity(), "Clicked at index " + finalI, Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(), "Insyl-Register", Toast.LENGTH_LONG).show();
                             break;
                     }
                 }
             });
         }
     }
-
-//    @OnClick(R.id.btnlogout)
-//    void logout(){
-//        Toast.makeText(getActivity(), "Logged out", Toast.LENGTH_SHORT).show();
-//        startActivity(new Intent(getActivity(), loginActivity.class));
-//        Hawk.deleteAll();
-//    }
 }

@@ -2,9 +2,12 @@ package com.example.ikhsanlaisa.insylapps.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +25,7 @@ import com.example.ikhsanlaisa.insylapps.Constant;
 import com.example.ikhsanlaisa.insylapps.R;
 import com.example.ikhsanlaisa.insylapps.Response.KelasResponse;
 import com.example.ikhsanlaisa.insylapps.Response.UserResponse;
+import com.example.ikhsanlaisa.insylapps.Utils;
 import com.example.ikhsanlaisa.insylapps.service.Api;
 
 import java.io.File;
@@ -30,7 +34,9 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,7 +49,13 @@ public class UpdateProfile extends BaseActivity implements AdapterView.OnItemCli
     Button save;
     SharedPreferences text;
     ImageView imgprof;
+    List<KelasResponse> kelasResponses;
     Button choose;
+    int id;
+    Uri imageUri;
+    File file;
+    String imgpath;
+    Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +71,6 @@ public class UpdateProfile extends BaseActivity implements AdapterView.OnItemCli
         imgprof = findViewById(R.id.gambardaripost);
         spkelas = findViewById(R.id.spkelas);
 
-//        String path = text.child
-//        SharedPreferences a = text.
         Api.getService().user().enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
@@ -71,7 +81,7 @@ public class UpdateProfile extends BaseActivity implements AdapterView.OnItemCli
                     tgl_lahir.setText(userResponse.getTgl_lahir());
                     no_hp.setText(userResponse.getNo_hp());
                     alamat.setText(userResponse.getAlamat());
-                    kelas.setText(String.valueOf(userResponse.getKelas_id()));
+                    kelas.setText(userResponse.kelas.getNama());
                     Glide.with(UpdateProfile.this).load(Constant.BASE_URL_PHOTO + "user/" + userResponse.getFoto()).into(imgprof);
                 }
             }
@@ -83,27 +93,55 @@ public class UpdateProfile extends BaseActivity implements AdapterView.OnItemCli
         });
 
         inispinnerkelas();
+
+
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Api.getService().updateuser(nama.getText().toString(), email.getText().toString(), tgl_lahir.getText().toString(), no_hp.getText().toString(), alamat.getText().toString(), spkelas.getSelectedItemPosition()+1).enqueue(new Callback<UserResponse>() {
-                    @Override
-                    public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                        if (response.isSuccessful()){
-                            Toast.makeText(UpdateProfile.this,"berhasil", Toast.LENGTH_LONG).show();
-                            Log.d("datajskndksd", String.valueOf(spkelas.getSelectedItemPosition()));
-//                            Glide.with(ProfilFragment.this).load(Constant.BASE_URL_PHOTO + "news/" + userResponse.getFoto()).into(photo);
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<UserResponse> call, Throwable t) {
-
-                    }
-                });
+                Log.d("TESTING","id = " + id);
+                saveData(nama.getText().toString(),email.getText().toString(),tgl_lahir.getText().toString(),
+                        no_hp.getText().toString(),alamat.getText().toString(),""+id, file);
             }
         });
 
+    }
+
+    private void saveData(String names, String emails, String birth, String hp, String address, String klass, final File file){
+        RequestBody name = RequestBody.create(MultipartBody.FORM, names);
+        RequestBody email = RequestBody.create(MultipartBody.FORM, emails);
+        RequestBody births = RequestBody.create(MultipartBody.FORM, birth);
+        RequestBody hps = RequestBody.create(MultipartBody.FORM, hp);
+        RequestBody addresss = RequestBody.create(MultipartBody.FORM, address);
+        RequestBody klasss = RequestBody.create(MultipartBody.FORM, klass);
+        RequestBody requestFile = null;
+        MultipartBody.Part files = null;
+        try{
+            requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+            files = MultipartBody.Part.createFormData("foto", file.getName(),requestFile);
+        }catch (Exception e){
+
+        }
+
+        Api.getService().updateuser(name, email, births, hps, addresss, klasss, files).enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                if (response.isSuccessful()){
+                    Toast.makeText(UpdateProfile.this,"berhasil", Toast.LENGTH_LONG).show();
+                    Log.d("datajskndksd", String.valueOf(spkelas.getSelectedItemPosition()));
+                    Log.d("datajskndksd", ""+file);
+//                            Glide.with(ProfilFragment.this).load(Constant.BASE_URL_PHOTO + "news/" + userResponse.getFoto()).into(photo);
+                }else{
+                    Log.d("TESTING","NOT SUCCESFULL = " + Utils.parsingObjestToString(response.body()));
+                    Log.d("TESTING", ""+file);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Log.d("TESTING","Error = " + t.getMessage());
+            }
+        });
     }
 
     private void inispinnerkelas() {
@@ -111,7 +149,7 @@ public class UpdateProfile extends BaseActivity implements AdapterView.OnItemCli
             @Override
             public void onResponse(Call<List<KelasResponse>> call, Response<List<KelasResponse>> response) {
                 if (response.isSuccessful()){
-                    List<KelasResponse> kelasResponses = response.body();
+                    kelasResponses = response.body();
                     List<String> listSpinner = new ArrayList<String>();
                     for (int i = 0; i < kelasResponses.size(); i++){
                         listSpinner.add(kelasResponses.get(i).getNama());
@@ -126,6 +164,19 @@ public class UpdateProfile extends BaseActivity implements AdapterView.OnItemCli
 
             @Override
             public void onFailure(Call<List<KelasResponse>> call, Throwable t) {
+
+            }
+        });
+
+        spkelas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedName = parent.getItemAtPosition(position).toString();
+                UpdateProfile.this.id = kelasResponses.get(position).getId();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
@@ -147,18 +198,26 @@ public class UpdateProfile extends BaseActivity implements AdapterView.OnItemCli
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(resultCode==RESULT_OK){
             if(requestCode==SELECT_PICTURE){
-
                 //Mendapatkan data dari intent
-                Uri imageUri = data.getData();
-                try {
-                    //Merubah data menjadi inputstream yang diolah menjadi bitmap dan ditempatkan pada imageview
-                    InputStream stream = getContentResolver().openInputStream(imageUri);
-                    Bitmap gambar = BitmapFactory.decodeStream(stream);
-                    imgprof.setImageBitmap(gambar);
-                } catch (FileNotFoundException e) {
-                    Log.w("FileNotFoundException", e.getMessage());
-                    Toast.makeText(this, "Unable to load image", Toast.LENGTH_SHORT).show();
+                imageUri = data.getData();
+                String[] filepathcolumn = {MediaStore.Images.Media.DATA};
+                cursor = getContentResolver().query(imageUri, filepathcolumn, null, null, null);
+                if (cursor != null){
+                    cursor.moveToFirst();
+
+                    int columnindex = cursor.getColumnIndex(filepathcolumn[0]);
+                    UpdateProfile.this.imgpath = cursor.getString(columnindex);
+                    Glide.with(UpdateProfile.this).load(new File(UpdateProfile.this.imgpath)).into(imgprof);
+                    cursor.close();
                 }
+
+                file = new File(UpdateProfile.this.imgpath);
+                if(file==null){
+                    Log.d("ini file gambar", "file nya kosong");
+                }else{
+                    Log.d("ini file gambar", "file nya gak kosong");
+                }
+                Toast.makeText(UpdateProfile.this, "Kamu memilih kelas " + UpdateProfile.this.imgpath, Toast.LENGTH_SHORT).show();
             }
 
             //Ketika user tidak memilih foto
@@ -172,7 +231,7 @@ public class UpdateProfile extends BaseActivity implements AdapterView.OnItemCli
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         String selectedName = parent.getItemAtPosition(position).toString();
-
+        id = kelasResponses.get(position).getId();
         Toast.makeText(UpdateProfile.this, "Kamu memilih kelas " + selectedName, Toast.LENGTH_SHORT).show();
     }
 }

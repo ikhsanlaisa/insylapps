@@ -51,11 +51,13 @@ public class ScoreAdapter extends RecyclerView.Adapter<ScoreAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ScoreAdapter.ViewHolder holder, int position) {
-        holder.team_1.setText(scoreList.get(position).getTim1());
-        holder.team_2.setText(scoreList.get(position).getTim2());
-        holder.score.setText(scoreList.get(position).getScore());
-        holder.cabor.setText(scoreList.get(position).getCabor());
-        holder.place.setText(scoreList.get(position).getTempat());
+        for (ScoreResponse score : scoreList) {
+            holder.team_1.setText(score.tim1.getNama());
+            holder.team_2.setText(score.tim2.getNama());
+            holder.score.setText(scoreList.get(position).getScore());
+            holder.cabor.setText(score.cabor.getCabor());
+            holder.place.setText(scoreList.get(position).getTempat());
+        }
     }
 
     @Override

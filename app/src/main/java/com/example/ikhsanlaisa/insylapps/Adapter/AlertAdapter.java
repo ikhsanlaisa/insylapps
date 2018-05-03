@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.example.ikhsanlaisa.insylapps.R;
 import com.example.ikhsanlaisa.insylapps.Response.MatchResponse;
 
+import org.json.JSONObject;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -47,12 +49,15 @@ public class AlertAdapter extends RecyclerView.Adapter<AlertAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(AlertAdapter.ViewHolder holder, int position) {
-        holder.team_1.setText(String.valueOf(matchResponses.get(position).getTim1()));
+
+        for (MatchResponse match : matchResponses) {
+            holder.team_1.setText(matchResponses.get(position).kelas.getNama());
 //        holder.team_1.setText(matchResponses.get(position).);
-        holder.team_2.setText(String.valueOf(matchResponses.get(position).getTim2()));
-        holder.date.setText(matchResponses.get(position).getDate());
-        holder.cabor.setText(String.valueOf(matchResponses.get(position).getCabor()));
-        holder.place.setText(matchResponses.get(position).getTempat());
+            holder.team_2.setText(matchResponses.get(position).kelas1.getNama());
+            holder.date.setText(matchResponses.get(position).getDate());
+            holder.cabor.setText(matchResponses.get(position).cabors.getCabor());
+            holder.place.setText(matchResponses.get(position).getTempat());
+        }
     }
 
     @Override

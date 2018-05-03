@@ -15,6 +15,17 @@
         android:layout_gravity="center"
         android:src="@drawable/logo_insyl1_1" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insyl Contact"
+        android:textStyle="bold"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textSize="30sp"
+        android:layout_marginBottom="15dp"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/konrecycler"
         android:layout_width="match_parent"

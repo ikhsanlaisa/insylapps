@@ -60,13 +60,13 @@
                         android:layout_margin="10dp"
                         android:hint="Enter your email" />
 
-                    <EditText
-                        android:id="@+id/password"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                    <Spinner
+                        android:id="@+id/spcabor"
                         android:layout_margin="10dp"
-                        android:hint="Enter your password"
-                        android:inputType="textPassword" />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </Spinner>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -75,6 +75,7 @@
                         android:layout_gravity="center">
 
                         <Button
+                            android:id="@+id/regis"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:text="submit"

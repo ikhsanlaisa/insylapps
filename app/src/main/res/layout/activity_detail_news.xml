@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/list_grad"
     android:orientation="vertical"
-    android:layout_height="match_parent"
     tools:context=".ui.DetailNews">
 
     <ImageView
@@ -14,7 +13,7 @@
         android:layout_width="100dp"
         android:layout_height="46dp"
         android:layout_gravity="center"
-        android:layout_marginBottom="30dp"
+
         android:src="@drawable/logo_insyl1_1" />
 
     <ScrollView
@@ -24,40 +23,52 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
-
-            <TextView
-                android:id="@+id/title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Profil"
-                android:textStyle="bold"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                android:textSize="35sp"
-                android:layout_marginBottom="15dp"/>
-
-            <ImageView
-                android:id="@+id/imgnewss"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/basket"
-                />
+            android:orientation="vertical">
 
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/isi"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_margin="5dp"
                     android:layout_height="wrap_content"
-                    android:text="sjkdsndknskdn"
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:text="Profil"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                        android:textSize="35sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/imgnewss"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:src="@drawable/basket" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0.75dp"
+                        android:background="#808080"
+                        />
+
+
+
+                    <TextView
+                        android:id="@+id/isi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="20dp"
+                        android:text="sjkdsndknskdn"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                </LinearLayout>
             </android.support.v7.widget.CardView>
 
         </LinearLayout>

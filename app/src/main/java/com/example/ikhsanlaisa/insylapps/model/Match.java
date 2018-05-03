@@ -1,14 +1,10 @@
-package com.example.ikhsanlaisa.insylapps.Response;
+package com.example.ikhsanlaisa.insylapps.model;
 
+import com.example.ikhsanlaisa.insylapps.Response.KelasResponse;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by ikhsanlaisa on 26/03/18.
- */
-
-public class MatchResponse extends BaseResponse {
-
+public class Match {
     @SerializedName("date_time")
     @Expose
     public String date;
@@ -32,14 +28,6 @@ public class MatchResponse extends BaseResponse {
     @SerializedName("kelas")
     @Expose
     public KelasResponse kelas;
-
-    @SerializedName("kelas1")
-    @Expose
-    public KelasResponse kelas1;
-
-    @SerializedName("cb_olahraga")
-    @Expose
-    public CaborResponse cabors;
 
     public String getCabor() {
         return cabor;

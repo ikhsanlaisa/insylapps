@@ -17,15 +17,15 @@ public class ScoreResponse extends BaseResponse {
 
     @SerializedName("cabor")
     @Expose
-    public String cabor;
+    public CaborResponse cabor;
 
     @SerializedName("tim1")
     @Expose
-    public String tim1;
+    public KelasResponse tim1;
 
     @SerializedName("tim2")
     @Expose
-    public String tim2;
+    public KelasResponse tim2;
 
     @SerializedName("score")
     @Expose
@@ -35,36 +35,12 @@ public class ScoreResponse extends BaseResponse {
     @Expose
     public String tempat;
 
-    public String getCabor() {
-        return cabor;
-    }
-
-    public void setCabor(String cabor) {
-        this.cabor = cabor;
-    }
-
     public int getJadwal() {
         return jadwal;
     }
 
     public void setJadwal(int jadwal) {
         this.jadwal = jadwal;
-    }
-
-    public String getTim1() {
-        return tim1;
-    }
-
-    public void setTim1(String tim1) {
-        this.tim1 = tim1;
-    }
-
-    public String getTim2() {
-        return tim2;
-    }
-
-    public void setTim2(String tim2) {
-        this.tim2 = tim2;
     }
 
     public String getScore() {

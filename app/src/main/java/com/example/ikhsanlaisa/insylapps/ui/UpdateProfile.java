@@ -173,6 +173,7 @@ public class UpdateProfile extends BaseActivity implements AdapterView.OnItemCli
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedName = parent.getItemAtPosition(position).toString();
                 UpdateProfile.this.id = kelasResponses.get(position).getId();
+                Toast.makeText(UpdateProfile.this, "Kamu memilih kelas " + id, Toast.LENGTH_SHORT).show();
             }
 
             @Override
